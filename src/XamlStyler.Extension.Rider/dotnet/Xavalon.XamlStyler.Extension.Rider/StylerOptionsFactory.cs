@@ -85,7 +85,9 @@ namespace Xavalon.XamlStyler.Extension.Rider
                 var searchToDriveRoot = settings.GetValue((XamlStylerSettings s) => s.SearchToDriveRoot);
                 
                 var highestRootPath = solution != null && !solution.IsTemporary
-                    ? (searchToDriveRoot ? Path.GetPathRoot(solution.SolutionFilePath.FullPath) : Path.GetDirectoryName(solution.SolutionFilePath.FullPath))
+                    ? (searchToDriveRoot 
+                           ? Path.GetPathRoot(solution.SolutionFilePath.FullPath) 
+                           : Path.GetDirectoryName(solution.SolutionFilePath.FullPath)) ?? string.Empty
                     : string.Empty;
 
                 var itemPath = sourceFilePath;
